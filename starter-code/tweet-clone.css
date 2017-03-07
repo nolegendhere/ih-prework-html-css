@@ -1,0 +1,25 @@
+
+.element1 {
+  display:inline-block;margin-right:10px; width:200px;
+}
+.element2 {
+  display:inline-block; width:200px;
+}
+.element3 {
+  display:inline-block;margin-right:10px; width:200px;
+}
+.element4 {
+  display:inline-block; width:200px;
+}
+.element5 {
+  display:block; width:200px;
+}
+/*.element6 {
+  display:inline-block;margin-right:10px; width:20px; background-color:blue;
+}*/
+.element6 {
+  display:inline-block;margin-right:10px; width:200px;
+}
+.element7 {
+  display:inline-block; width:200px;
+}

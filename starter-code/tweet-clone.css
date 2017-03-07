@@ -1,25 +1,92 @@
 
-.element1 {
+body{
+  background: rgb(244, 248, 249)
+}
+
+#twitt{
+  display:block; width:2500px;
+  background:        rgb(255, 255, 255);
+  border:            rgb(225, 232, 237);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:              rgb(0, 0, 0)
+
+}
+
+#twitt-head{
+  display:block; margin-bottom:50px;
+}
+#element1 {
+  display:inline-block;margin-right:10px;width:1000px;
+}
+#element11 {
+  display:inline-block; margin-right:30px; width: 450px;background-color: yellow
+}
+#element12 {
+  display:inline-block; width:500px; /*background-color: blue*/ background-color: yellow
+}
+#element121 {
+  display:block; width:250px; /*background-color: blue*/
+}
+#element1211 {
+  display:inline-block; width:50px; /*background-color: blue*/
+}
+#element1212 {
+  display:inline-block; width:50px; /*background-color: blue*/
+}
+#element1213 {
+  display:inline-block; width:50px; /*background-color: blue*/
+}
+#element122 {
+  display:block; width:250px; /*background-color: blue*/
+  color: rgb(105, 120, 130);
+}
+#element2 {
+  display:inline-block; width:1000px background-color: blue;
+}
+#element21 {
+  display:block; width:500px background-color: blue;
+}
+#element211 {
+  display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
+}
+#element212 {
+  display:inline-block; width:100px; /*background-color: blue*/
+}
+#twitt-content{
+}
+#element3 {
   display:inline-block;margin-right:10px; width:200px;
 }
-.element2 {
-  display:inline-block; width:200px;
+#twitt-time{
 }
-.element3 {
-  display:inline-block;margin-right:10px; width:200px;
-}
-.element4 {
-  display:inline-block; width:200px;
-}
-.element5 {
+#element4 {
   display:block; width:200px;
+  color: rgb(105, 120, 130);
 }
-/*.element6 {
-  display:inline-block;margin-right:10px; width:20px; background-color:blue;
-}*/
-.element6 {
+#twitt-options{
+  color: rgb(105, 120, 130);
+}
+#element5 {
   display:inline-block;margin-right:10px; width:200px;
 }
-.element7 {
+#element51 {
+  display:inline-block; margin-right:0px; width: 100px;
+}
+#element6 {
   display:inline-block; width:200px;
+}
+#element61 {
+  display:inline-block; margin-right:0px; width: 50px;
+}
+#element62 {
+  display:inline-block; margin-right:0px; width: 50px;
+}
+#element7 {
+  display:inline-block; width:200px;
+}
+#element71 {
+  display:inline-block; margin-right:0px; width: 50px;
+}
+#element72 {
+  display:inline-block; margin-right:0px; width: 50px;
 }

@@ -2,13 +2,12 @@
 body{
   background: rgb(244, 248, 249)
 }
-
 button{
   background:        rgb(255, 255, 255);
 }
-
 #twitt{
-  display:block; width:2500px;
+  float: left;
+  width:1030px;
   background:        rgb(255, 255, 255);
   border:            rgb(225, 232, 237);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -17,149 +16,244 @@ button{
   padding: 30px 30px 30px 30px;
   border: 3px solid rgb(200, 200, 200);
   border-radius : 10px;
-
 }
-
 #twitt-head{
-  display:block;
-  margin-bottom:50px;
-  align-items: center;
+  float: left;
+  width:1000px;
+}
+#head{
+  float:left;
+  height: 100px;
+  width:1000px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
 }
 #user-head {
-  display:inline-block;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
-  width:500px;
+  /*float:left;*/
   height: 100px;
-  background-color: yellow
+  width:500px;
 }
 #avatarpicture-user-head {
-  display:inline-block;
-  position: relative;
-  margin-right:50px;
-  margin-top:0px;
-  width: 50px;
+  float:left;
+  height: 90px;
+  width:90px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
+}
+#actual-avatarpicture-user-head {
+  /*float:left;*/
+  width: 90px;
 }
 #information-user-head {
-  display:inline-block;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
-  width:200px;
+  float:left;
+  width:400px;
 }
 #status-information-user-head{
-  display:block;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
-  width:250px;
+  float:left;
+  height: 50px;
+  width:400px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
 }
 #emoticon-status-information-user-head {
-  display:inline-block; width:30px;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
+  /*float:left;*/
+  width:20px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
+}
+#actual-emoticon-status-information-user-head {
+  /*float:left;*/
+  width:20px;
 }
 #name-status-information-user-head {
-  display:inline-block; width:80px;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
+  /*float:left;*/
+  width:70px;
+  display: flex;
+  align-items:center;
+}
+#actual-name-status-information-user-head {
+  /*float:left;*/
+  line-height: 0;
+  width:70px;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 30px;
 }
 #validation-status-information-user-head {
-  display:inline-block; width:50px
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;;
+  /*float:left;*/
+  width:50px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
+}
+#actual-validation-status-information-user-head {
+  /*float:left;*/
+  width:50px;
 }
 #account-information-user-head {
-  display:block; width:250px;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
+  float:left;
+  height: 50px;
+  width:100px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
+}
+#actual-account-information-user-head {
+  /*float:left;*/
+  line-height: 0;
+  height: 70px;
+  width:100px;
   color: rgb(104, 109, 129);
+  font-size: 30px;
 }
 #follow-head {
-  display:inline-block; width:1000px;
-  position: relative;
-  margin-right:0px;
-  margin-top:0px;
-  background-color: blue
-
+  /*float:right;*/
+  height: 70px;
+  width: 500px;
 }
 #button-follow-head {
-  display:block; width:500px;
+  float:right;
+  height: 70px;
+  width:170px;
   color: rgb(85, 172, 238);
   border-color: rgb(85, 172, 238);
   border        : 3px solid;
   border-radius : 10px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
+  padding: 0px 10px 0px 10px;
 }
 #image-button-follow-head {
-  display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
+  /*float:left;*/
+  width:100px;
 }
 #text-button-follow-head {
-  display:inline-block; width:100px; /*background-color: blue*/
+  /*float:right;*/
+  line-height: 0;
+  width:100px;
   font-size: 30px;
   font-weight: bold;
 }
 #twitt-content{
-  display:block;
+  float:left;
+  width:1000px;
 }
 #message-content {
-  display:inline-block;margin-right:10px; width:200px;
+  float:left;
+  height: 40px;
+  width:1000px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
+}
+#actual-message-content {
+  /*float:left;*/
+  line-height: 0;
+  width:1000px;
+  font-size: 30px;
 }
 #twitt-time{
-  display:block;
+  float: left;
+  width:1000px;
   color: rgb(101, 116, 127);
 }
 #date-time {
-  display:block; width:200px;
+  float:left;
+  height: 40px;
+  width:1000px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
+}
+#actual-date-time {
+  /*float:left;*/
+  line-height: 0;
+  width:1000px;
+  font-size: 30px;
 }
 #twitt-options{
-  width:2000px;
+  float:left;
+  width:1000px;
   color: rgb(105, 120, 130);
 }
+#options{
+  float:left;
+  height: 50px;
+  width:1000px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
+}
 #reply-options {
-  display:inline-block;margin-right:10px;width:200px;
+  /*float:left;*/
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
 }
 #button-reply-options {
-  display:block; width:50px;
+  /*float:left;*/
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
+  padding: 0px 10px 0px 10px;
   border        : none;
 }
 #image-button-reply-options {
-  display:block; width: 30px;
+  /*float:left;*/
+  width:30px;
 }
 #retweet-options {
-  display:inline-block; width:400px;
+  float:left;
+  height: 50px;
+  width: 170px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
 }
 #button-retweet-options {
-  display:block; width:400px;
+  /*float:left;*/
+  height: 50px;
+  width: 170px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
+  padding: 0px 10px 0px 10px;
   border        : none;
 }
 #image-button-retweet-options {
-  display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
+  /*float:left;*/
+  width:30px;
+  margin-right: 10px;
 }
 #text-button-retweet-options {
-  display:inline-block; width:100px;
-  font-size: 15px;
+  /*float:right;*/
+  line-height: 0;
+  width:100px;
+  font-size:30px;
+  font-weight: bold;
   color: rgb(105, 120, 130);
 }
 #favorite-options {
-  display:inline-block; width:400px;
+  float:left;
+  height: 50px;
+  width: 170px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
 }
 #button-favorite-options {
-  display:block; width:400px;
-  border        : none;
+  /*float:left;*/
+  height: 50px;
+  width: 170px;
+  display: flex;
+  align-items:center; /*deactivates float of immediate childs*/
+  padding: 0px 10px 0px 10px;
+  border        : none
 }
 #image-button-favorite-options {
-  display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
+  /*float:left;*/
+  width:30px;
+  margin-right: 10px;
 }
 #text-button-favorite-options {
-  display:inline-block; width:100px;
-  font-size: 15px;
+  /*float:right;*/
+  line-height: 0;
+  width:100px;
+  font-size:30px;
+  font-weight: bold;
   color: rgb(105, 120, 130);
 }

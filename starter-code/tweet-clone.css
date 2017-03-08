@@ -15,53 +15,93 @@ button{
   color:              rgb(0, 0, 0);
   margin: 10px 10px 10px 10px;
   padding: 30px 30px 30px 30px;
+  border: 3px solid rgb(200, 200, 200);
+  border-radius : 10px;
 
 }
 
 #twitt-head{
-  display:block; margin-bottom:50px;
+  display:block;
+  margin-bottom:50px;
+  align-items: center;
 }
-#element1 {
-  display:inline-block;margin-right:10px;width:1000px;
+#user-head {
+  display:inline-block;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
+  width:500px;
+  height: 100px;
+  background-color: yellow
 }
-#element11 {
-  display:inline-block; margin-right:30px; width: 450px;background-color: yellow
+#avatarpicture-user-head {
+  display:inline-block;
+  position: relative;
+  margin-right:50px;
+  margin-top:0px;
+  width: 50px;
 }
-#element12 {
-  display:inline-block; width:500px; /*background-color: blue*/ background-color: yellow
+#information-user-head {
+  display:inline-block;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
+  width:200px;
 }
-#element121 {
-  display:block; width:250px; /*background-color: blue*/
+#status-information-user-head{
+  display:block;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
+  width:250px;
 }
-#element1211 {
-  display:inline-block; width:50px; /*background-color: blue*/
+#emoticon-status-information-user-head {
+  display:inline-block; width:30px;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
 }
-#element1212 {
-  display:inline-block; width:50px; /*background-color: blue*/
+#name-status-information-user-head {
+  display:inline-block; width:80px;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
   color: rgb(0, 0, 0);
   font-weight: bold;
+  font-size: 30px;
 }
-#element1213 {
-  display:inline-block; width:50px; /*background-color: blue*/
+#validation-status-information-user-head {
+  display:inline-block; width:50px
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;;
 }
-#element122 {
-  display:block; width:250px; /*background-color: blue*/
+#account-information-user-head {
+  display:block; width:250px;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
   color: rgb(104, 109, 129);
 }
-#element2 {
+#follow-head {
   display:inline-block; width:1000px;
+  position: relative;
+  margin-right:0px;
+  margin-top:0px;
+  background-color: blue
+
 }
-#element21 {
+#button-follow-head {
   display:block; width:500px;
   color: rgb(85, 172, 238);
   border-color: rgb(85, 172, 238);
   border        : 3px solid;
   border-radius : 10px;
 }
-#element211 {
+#image-button-follow-head {
   display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
 }
-#element212 {
+#text-button-follow-head {
   display:inline-block; width:100px; /*background-color: blue*/
   font-size: 30px;
   font-weight: bold;
@@ -69,56 +109,56 @@ button{
 #twitt-content{
   display:block;
 }
-#element3 {
+#message-content {
   display:inline-block;margin-right:10px; width:200px;
 }
 #twitt-time{
   display:block;
   color: rgb(101, 116, 127);
 }
-#element4 {
+#date-time {
   display:block; width:200px;
 }
 #twitt-options{
   width:2000px;
   color: rgb(105, 120, 130);
 }
-#element5 {
+#reply-options {
   display:inline-block;margin-right:10px;width:200px;
 }
-#element51 {
+#button-reply-options {
   display:block; width:50px;
   border        : none;
 }
-#element511 {
+#image-button-reply-options {
   display:block; width: 30px;
 }
-#element6 {
+#retweet-options {
   display:inline-block; width:400px;
 }
-#element61 {
+#button-retweet-options {
   display:block; width:400px;
   border        : none;
 }
-#element611 {
+#image-button-retweet-options {
   display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
 }
-#element612 {
+#text-button-retweet-options {
   display:inline-block; width:100px;
   font-size: 15px;
   color: rgb(105, 120, 130);
 }
-#element7 {
+#favorite-options {
   display:inline-block; width:400px;
 }
-#element71 {
+#button-favorite-options {
   display:block; width:400px;
   border        : none;
 }
-#element711 {
+#image-button-favorite-options {
   display:inline-block; margin-right:30px; width: 100px;/*background-color: red*/
 }
-#element712 {
+#text-button-favorite-options {
   display:inline-block; width:100px;
   font-size: 15px;
   color: rgb(105, 120, 130);

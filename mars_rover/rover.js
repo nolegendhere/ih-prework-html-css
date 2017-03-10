@@ -19,6 +19,11 @@ var myRover = {
   direction: 'N'
 };
 
+var mySecondRover = {
+  position: [9,9], //0-->rows, 1-->cols
+  direction: 'S'
+};
+
 //dimensions of the grid where the rover will walk on
 var rowsMax = 10;
 var colsMax = 10;

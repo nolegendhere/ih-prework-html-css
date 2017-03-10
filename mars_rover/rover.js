@@ -13,16 +13,19 @@
 
 //In chrome console introduce commandExecution('fffff'); for example, and resetPositionDirection(); to reset the rover's position
 
+//the rover that we will move through the grid
 var myRover = {
   position: [0,0], //0-->rows, 1-->cols
-  direction: 'N',
-  lastPosition: this.position
+  direction: 'N'
 };
 
+//dimensions of the grid where the rover will walk on
 var rowsMax = 10;
 var colsMax = 10;
+//the actual grid where the rover will walk on
 var grid = [];
 
+//'initialization' of the grid where the rover will walk on
 for (i=0;i<rowsMax;i++) {
   grid[i]=[];
   for (j=0;j<colsMax;j++) {
@@ -30,16 +33,45 @@ for (i=0;i<rowsMax;i++) {
   }
 }
 
-function placeObstacles()
+//it puts and obstacle in the cell with these rows and cols coordinates on the grid
+function placeObstacles(row, col)
 {
-
+  grid[row][col]=2;
 }
 
-function goForward(rover) {
+//it returns to walkable the cell with these rows and cols coordinates on the grid
+function placeWalkable(row, col)
+{
+  grid[row][col]=1;
+}
 
+//It resets to walkable all the cells of the grid
+function resetGrid()
+{
+  for (i=0;i<rowsMax;i++) {
+    for (j=0;j<colsMax;j++) {
+      grid[i][j]=1;
+    }
+  }
+}
+
+//it returns to the console the actual grid by its coordinates and the value of each cell
+function displayGrid()
+{
+  for (i=0;i<rowsMax;i++) {
+    for (j=0;j<colsMax;j++) {
+      console.log("row " + i + " col " + j + " value " + grid[i][j]);
+    }
+  }
+}
+
+//go forward if direction is N, it will go y+, to the N; if direction is W, it will go x+, to the W; the same for the other to cases
+//It returns the position of the rover and its direction in the console; also returns if the rover has bumped into an obstacle
+function goForward(rover) {
+  var lastPosition;
   switch(rover.direction) {
     case 'N':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[0];
       rover.position[0]++;
       if((rover.position[0])%rowsMax===0) //go y+
       {
@@ -51,13 +83,13 @@ function goForward(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[0] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'W':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[1];
       rover.position[1]++;
       if((rover.position[1])%colsMax===0) //go x+
       {
@@ -70,13 +102,13 @@ function goForward(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[1] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'S':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[0];
       rover.position[0]--;
       if((rover.position[0])===-1) //go y-
       {
@@ -89,13 +121,13 @@ function goForward(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[0] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'E':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[1];
       rover.position[1]--;
       if((rover.position[1])===-1) //go x-
       {
@@ -107,7 +139,7 @@ function goForward(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[1] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
@@ -117,11 +149,13 @@ function goForward(rover) {
 
 }
 
+//go backwards; if direction is N, it will go y-, to the S; if direction is W, it will go x-, to the E; the same for the other to cases
+//It returns the position of the rover and its direction in the console; also returns if the rover has bumped into an obstacle
 function goBackwards(rover) {
-
+  var lastPosition;
   switch(rover.direction) {
     case 'N':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[0];
       rover.position[0]--;
       if((rover.position[0])===-1) //go y-
       {
@@ -133,13 +167,13 @@ function goBackwards(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[0] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'W':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[1];
       rover.position[1]--;
       if((rover.position[1])===-1) //go x-
       {
@@ -151,13 +185,13 @@ function goBackwards(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[1] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'S':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[0];
       rover.position[0]--;
       if((rover.position[0])%rowsMax===0) //go y+
       {
@@ -169,13 +203,13 @@ function goBackwards(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[0] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'E':
-      rover.lastPosition = rover.position;
+      lastPosition = rover.position[1];
       rover.position[1]--;
       if((rover.position[1])%colsMax===0) //go x+
       {
@@ -187,7 +221,7 @@ function goBackwards(rover) {
         console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position = rover.lastPosition;
+        rover.position[1] = lastPosition;
         console.log("Bumped into an obstacle");
         console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
@@ -195,6 +229,8 @@ function goBackwards(rover) {
   }
 }
 
+//Turn to the right; if direction is N, it will turn to E; if direction is W, it will turn to N; the same for the other cases
+//It returns the position of the rover and its direction in the console
 function turnRight(rover) {
 
   switch(rover.direction) {
@@ -215,6 +251,8 @@ function turnRight(rover) {
   console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
+//Turn to the left; if direction is N, it will turn to W; if direction is W, it will turn to S; the same for the other cases
+//It returns the position of the rover and its direction in the console
 function turnLeft(rover) {
 
   switch(rover.direction) {
@@ -235,6 +273,7 @@ function turnLeft(rover) {
   console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
+//In chrome console introduce commandExecution('fffff'); for example, and resetPositionDirection(); to reset the rover's position
 function commandsExecution(commandsSent)
 {
   console.log("commandsReceived");

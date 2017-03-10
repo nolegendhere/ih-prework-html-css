@@ -1,3 +1,17 @@
+
+//Description grid 10x10 (rosMax*colsMax)
+/*
+              S
+    0,0 0,1 0,2 0,3......0,9
+    1,0 1,1 1,2 1,3......1,9
+  E ......................... W
+    .........................
+    9,0 9,1 9,2 9,3......9,9
+              N
+*/
+
+//In chrome console introduce commandExecution('fffff'); for example, and resetPositionDirection(); to reset the rover's position
+
 var myRover = {
   position: [0,0], //0-->rows, 1-->cols
   direction: 'N'
@@ -18,64 +32,64 @@ function goForward(rover) {
 
   switch(rover.direction) {
     case 'N':
-      if((rover.position[0]++)%rowsMax===0) //go y+
+      if(++(rover.position[0])%rowsMax===0) //go y+
       {
         rover.position[0]=0;
       }
       break;
     case 'W':
-      if((rover.position[1]++)%colsMax===0) //go x+
+      if(++(rover.position[1])%colsMax===0) //go x+
       {
         rover.position[1]=0;
       }
       break;
     case 'S':
-      if((rover.position[0]--)===-1) //go y-
+      if(--(rover.position[0])===-1) //go y-
       {
-        rover.position[0]=rowsMax;
+        rover.position[0]=rowsMax-1;
       }
       break;
     case 'E':
-      if((rover.position[1]--)===-1) //go x-
+      if(--(rover.position[1])===-1) //go x-
       {
-        rover.position[1]=colsMax;
+        rover.position[1]=colsMax-1;
       }
       break;
   }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
 function goBackwards(rover) {
 
   switch(rover.direction) {
     case 'N':
-      if((rover.position[0]--)===-1) //go y-
+      if(--(rover.position[0])===-1) //go y-
       {
-        rover.position[0]=rowsMax;
+        rover.position[0]=rowsMax-1;
       }
       break;
     case 'W':
-      if((rover.position[1]--)===-1) //go x-
+      if(--(rover.position[1])===-1) //go x-
       {
-        rover.position[1]=colsMax;
+        rover.position[1]=colsMax-1;
       }
       break;
     case 'S':
-      if((rover.position[0]++)%rowsMax===0) //go y+
+      if(++(rover.position[0])%rowsMax===0) //go y+
       {
         rover.position[0]=0;
       }
       break;
     case 'E':
-      if((rover.position[1]++)%colsMax===0) //go x+
+      if(++(rover.position[1])%colsMax===0) //go x+
       {
         rover.position[1]=0;
       }
       break;
   }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
 function turnRight(rover) {
@@ -83,35 +97,19 @@ function turnRight(rover) {
   switch(rover.direction) {
     case 'N':
       rover.direction='E';
-      if((rover.position[1]--)===-1) //go x-
-      {
-        rover.position[1]=colsMax;
-      }
       break;
     case 'W':
       rover.direction='N';
-      if((rover.position[0]++)%rowsMax===0) //go y+
-      {
-        rover.position[0]=0;
-      }
       break;
     case 'S':
       rover.direction='W';
-      if((rover.position[1]++)%colsMax===0) //go x+
-      {
-        rover.position[1]=0;
-      }
       break;
     case 'E':
       rover.direction='S';
-      if((rover.position[0]--)===-1) //go y-
-      {
-        rover.position[0]=rowsMax;
-      }
       break;
   }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
 function turnLeft(rover) {
@@ -119,67 +117,67 @@ function turnLeft(rover) {
   switch(rover.direction) {
     case 'N':
       rover.direction='W';
-      if((rover.position[1]++)%colsMax===0) //go x+
-      {
-        rover.position[1]=0;
-      }
       break;
     case 'W':
       rover.direction='S';
-      if((rover.position[0]--)===-1) //go y-
-      {
-        rover.position[0]=rowsMax;
-      }
       break;
     case 'S':
       rover.direction='E';
-      if((rover.position[1]--)===-1) //go x-
-      {
-        rover.position[1]=colsMax;
-      }
       break;
     case 'E':
       rover.direction='N';
-      if((rover.position[0]++)%rowsMax===0) //go y+
-      {
-        rover.position[0]=0;
-      }
       break;
   }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
 function commandsExecution(commandsSent)
 {
-  console.log("entra");
-  console.log(commandsSent);
+  console.log("commandsReceived");
   for(var command in commandsSent)
   {
-    console.log("entra2");
-    console.log(command);
     switch (commandsSent[command]) {
       case 'f':
-        console.log("entra2");
+        console.log("Forward");
         goForward(myRover);
         break;
       case 'b':
-        console.log("entra2");
+        console.log("Barckwards");
         goBackwards(myRover);
         break;
       case 'r':
-        console.log("entra2");
+        console.log("turnRigh");
         turnRight(myRover);
         break;
       case 'l':
-        console.log("entra2");
+        console.log("turnLeft");
         turnLeft(myRover);
         break;
-
+      default:
+        console.log("invalidCommand");
+        break;
     }
   }
 }
 
-var commands = ['f','b'];
+function resetPositionDirection()
+{
+  myRover.position = [0,0];
+  myRover.direction = 'N';
+  console.log("New Rover Position: [" + myRover.position[0] + ", " + myRover.position[1] + "]; Direction: " + myRover.direction);
+  return true;
+}
 
-commandsExecution(commands);
+//Description grid 10x10 (rosMax*colsMax)
+/*
+              S
+    0,0 0,1 0,2 0,3......0,9
+    1,0 1,1 1,2 1,3......1,9
+  E ......................... W
+    .........................
+    9,0 9,1 9,2 9,3......9,9
+              N
+*/
+
+//In chrome console introduce commandExecution('fffff'); for example, and resetPositionDirection(); to reset the rover's position

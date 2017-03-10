@@ -15,13 +15,21 @@
 
 //the rover that we will move through the grid
 var myRover = {
+  name: "firstRover",
   position: [0,0], //0-->rows, 1-->cols
-  direction: 'N'
+  direction: 'N',
+  initialDirection:'N',
+  initialRow: 0,
+  initialCol: 0
 };
 
 var mySecondRover = {
+  name: "secondRover",
   position: [9,9], //0-->rows, 1-->cols
-  direction: 'S'
+  direction: 'S',
+  initialDirection:'S',
+  initialRow: 9,
+  initialCol: 9
 };
 
 //dimensions of the grid where the rover will walk on
@@ -34,20 +42,39 @@ var grid = [];
 for (i=0;i<rowsMax;i++) {
   grid[i]=[];
   for (j=0;j<colsMax;j++) {
-    grid[i][j]=1;
+    if((i===myRover.position[0] && j===myRover.position[1]) || (i===mySecondRover.position[0] && j===mySecondRover.position[1]))
+    {
+      grid[i][j]=3;
+    }
+    else
+    {
+      grid[i][j]=1;
+    }
   }
 }
 
 //it puts and obstacle in the cell with these rows and cols coordinates on the grid
 function placeObstacles(row, col)
 {
-  grid[row][col]=2;
+  if((row!=myRover.position[0] && col!=myRover.position[1]) || (row!=mySecondRover.position[0] && col!=mySecondRover.position[1]))
+  {
+    grid[row][col]=2;
+  }
+  else {
+    console.log("Impossible to customize this cell, there is a rover on it");
+  }
 }
 
 //it returns to walkable the cell with these rows and cols coordinates on the grid
 function placeWalkable(row, col)
 {
-  grid[row][col]=1;
+  if((row!=myRover.position[0] && col!=myRover.position[1]) || (row!=mySecondRover.position[0] && col!=mySecondRover.position[1]))
+  {
+    grid[row][col]=1;
+  }
+  else {
+    console.log("Impossible to customize this cell, there is a rover on it");
+  }
 }
 
 //It resets to walkable all the cells of the grid
@@ -55,7 +82,14 @@ function resetGrid()
 {
   for (i=0;i<rowsMax;i++) {
     for (j=0;j<colsMax;j++) {
-      grid[i][j]=1;
+      if((i===myRover.position[0] && j===myRover.position[1]) || (i===mySecondRover.position[0] && j===mySecondRover.position[1]))
+      {
+        grid[i][j]=3;
+      }
+      else
+      {
+        grid[i][j]=1;
+      }
     }
   }
 }
@@ -72,11 +106,14 @@ function displayGrid()
 
 //go forward if direction is N, it will go y+, to the N; if direction is W, it will go x+, to the W; the same for the other to cases
 //It returns the position of the rover and its direction in the console; also returns if the rover has bumped into an obstacle
+//rovercan be myRover or mySecondRover
 function goForward(rover) {
-  var lastPosition;
+  var lastRow;
+  var lastCol;
   switch(rover.direction) {
     case 'N':
-      lastPosition = rover.position[0];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[0]++;
       if((rover.position[0])%rowsMax===0) //go y+
       {
@@ -85,16 +122,25 @@ function goForward(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[0] = lastRow;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[0] = lastPosition;
+        rover.position[0] = lastRow;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'W':
-      lastPosition = rover.position[1];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[1]++;
       if((rover.position[1])%colsMax===0) //go x+
       {
@@ -103,17 +149,25 @@ function goForward(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[1] = lastCol;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[1] = lastPosition;
+        rover.position[1] = lastCol;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'S':
-      lastPosition = rover.position[0];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[0]--;
       if((rover.position[0])===-1) //go y-
       {
@@ -122,17 +176,25 @@ function goForward(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[0] = lastRow;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[0] = lastPosition;
+        rover.position[0] = lastRow;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'E':
-      lastPosition = rover.position[1];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[1]--;
       if((rover.position[1])===-1) //go x-
       {
@@ -141,26 +203,35 @@ function goForward(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[1] = lastCol;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[1] = lastPosition;
+        rover.position[1] = lastCol;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
   }
-
-
 }
 
 //go backwards; if direction is N, it will go y-, to the S; if direction is W, it will go x-, to the E; the same for the other to cases
 //It returns the position of the rover and its direction in the console; also returns if the rover has bumped into an obstacle
+//rovercan be myRover or mySecondRover
 function goBackwards(rover) {
-  var lastPosition;
+  var lastRow;
+  var lastCol;
   switch(rover.direction) {
     case 'N':
-      lastPosition = rover.position[0];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[0]--;
       if((rover.position[0])===-1) //go y-
       {
@@ -169,16 +240,25 @@ function goBackwards(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[0] = lastRow;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[0] = lastPosition;
+        rover.position[0] = lastRow;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'W':
-      lastPosition = rover.position[1];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[1]--;
       if((rover.position[1])===-1) //go x-
       {
@@ -187,16 +267,25 @@ function goBackwards(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[1] = lastCol;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[1] = lastPosition;
+        rover.position[1] = lastCol;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'S':
-      lastPosition = rover.position[0];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[0]--;
       if((rover.position[0])%rowsMax===0) //go y+
       {
@@ -205,16 +294,25 @@ function goBackwards(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[0] = lastRow;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[0] = lastPosition;
+        rover.position[0] = lastRow;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
     case 'E':
-      lastPosition = rover.position[1];
+      lastRow = rover.position[0];
+      lastCol = rover.position[1];
       rover.position[1]--;
       if((rover.position[1])%colsMax===0) //go x+
       {
@@ -223,12 +321,20 @@ function goBackwards(rover) {
       console.log("Value grid " + grid[rover.position[0]][rover.position[1]]);
       if(grid[rover.position[0]][rover.position[1]] === 1)
       {
-        console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        grid[rover.position[0]][rover.position[1]] = 3;
+        grid[lastRow][lastCol] = 1;
+        console.log("New "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+      }
+      else if (grid[rover.position[0]][rover.position[1]] === 3)
+      {
+        rover.position[1] = lastCol;
+        console.log("Bumped into the other rover");
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       else {
-        rover.position[1] = lastPosition;
+        rover.position[1] = lastCol;
         console.log("Bumped into an obstacle");
-        console.log("Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log( rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
       }
       break;
   }
@@ -236,6 +342,7 @@ function goBackwards(rover) {
 
 //Turn to the right; if direction is N, it will turn to E; if direction is W, it will turn to N; the same for the other cases
 //It returns the position of the rover and its direction in the console
+//rovercan be myRover or mySecondRover
 function turnRight(rover) {
 
   switch(rover.direction) {
@@ -253,11 +360,12 @@ function turnRight(rover) {
       break;
   }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+  console.log(rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; New Direction: " + rover.direction);
 }
 
 //Turn to the left; if direction is N, it will turn to W; if direction is W, it will turn to S; the same for the other cases
 //It returns the position of the rover and its direction in the console
+//rovercan be myRover or mySecondRover
 function turnLeft(rover) {
 
   switch(rover.direction) {
@@ -275,45 +383,55 @@ function turnLeft(rover) {
       break;
   }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+  console.log(rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; New direction: " + rover.direction);
 }
 
-//In chrome console introduce commandExecution('fffff'); for example, and resetPositionDirection(); to reset the rover's position
-function commandsExecution(commandsSent)
+//In chrome console introduce commandExecution('fffff',roverToMove); for example, and resetPositionDirection(roverToReset); to reset the rover's position
+//roverToMove and roverToReset can be myRover or mySecondRover
+function commandsExecution(commandsSent, rover)
 {
-  console.log("commandsReceived");
-  for(var command in commandsSent)
+  if(rover===null) //TO-DO: not working
   {
-    switch (commandsSent[command]) {
-      case 'f':
-        console.log("Forward");
-        goForward(myRover);
-        break;
-      case 'b':
-        console.log("Barckwards");
-        goBackwards(myRover);
-        break;
-      case 'r':
-        console.log("turnRigh");
-        turnRight(myRover);
-        break;
-      case 'l':
-        console.log("turnLeft");
-        turnLeft(myRover);
-        break;
-      default:
-        console.log("invalidCommand");
-        break;
+    console.log("no rover parameter");
+  }
+  else
+  {
+    console.log("commandsReceived by "+ rover.name);
+    for(var command in commandsSent)
+    {
+      switch (commandsSent[command]) {
+        case 'f':
+          console.log("Forward");
+          goForward(rover);
+          break;
+        case 'b':
+          console.log("Barckwards");
+          goBackwards(rover);
+          break;
+        case 'r':
+          console.log("turnRigh");
+          turnRight(rover);
+          break;
+        case 'l':
+          console.log("turnLeft");
+          turnLeft(rover);
+          break;
+        default:
+          console.log("invalidCommand");
+          break;
+      }
     }
   }
 }
 
-function resetPositionDirection()
+//retuns the rover to its initialPosition
+//rovercan be myRover or mySecondRover
+function resetPositionDirection(rover)
 {
-  myRover.position = [0,0];
-  myRover.direction = 'N';
-  console.log("New Rover Position: [" + myRover.position[0] + ", " + myRover.position[1] + "]; Direction: " + myRover.direction);
-  return true;
+  rover.position[0] = rover.initialRow;
+  rover.position[1] = rover.initialCol;
+  rover.direction = river.initialDirection;
+  console.log("Reset Position and direction of "+ rover.name +" Position: [" + rover.position[0] + ", " + rover.position[1] + "]; Direction: " + rover.direction);
 }
 
 

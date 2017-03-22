@@ -7,110 +7,65 @@ button{
 }
 #twitt{
   float: left;
-  width:1030px;
-  background:        rgb(255, 255, 255);
-  border:            rgb(225, 232, 237);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:              rgb(0, 0, 0);
-  margin: 10px 10px 10px 10px;
   padding: 30px 30px 30px 30px;
+  margin: 10px 10px 10px 10px;
   border: 3px solid rgb(200, 200, 200);
   border-radius : 10px;
+  width:1030px;
+  background:        rgb(255, 255, 255);
+  /*border:            rgb(225, 232, 237);*/
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:              rgb(0, 0, 0);
+
 }
 #twitt-head{
   float: left;
   width:1000px;
 }
-#head{
+
+#avatarpicture-head {
   float:left;
-  height: 100px;
-  width:1000px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
-#user-head {
-  /*float:left;*/
-  height: 100px;
-  width:500px;
-}
-#avatarpicture-user-head {
-  float:left;
-  height: 90px;
-  width:90px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
-#actual-avatarpicture-user-head {
-  /*float:left;*/
-  width: 90px;
-}
-#information-user-head {
-  float:left;
-  width:400px;
-}
-#status-information-user-head{
-  float:left;
-  height: 50px;
-  width:400px;
-  display: flex;
-  align-items:center; /*deactivates float of immediate childs*/
-}
-#emoticon-status-information-user-head {
-  /*float:left;*/
-  width:20px;
-  display: flex;
-  align-items:center; /*deactivates float of immediate childs*/
-}
-#actual-emoticon-status-information-user-head {
-  /*float:left;*/
-  width:20px;
-}
-#name-status-information-user-head {
-  /*float:left;*/
+  padding: 10px 10px 10px 10px;
+  height: 70px;
   width:70px;
-  display: flex;
-  align-items:center;
 }
-#actual-name-status-information-user-head {
-  /*float:left;*/
+#information-head {
+  float:left;
+  width:400px;
+}
+
+#emoticon-information-head {
+  float:left;
+  padding: 10px 0px 10px 10px;
+}
+
+#name-information-head {
+  float:left;
+  padding: 0px /*top*/ 0px /*right*/ 0px /*bottom*/  10px; /*left*/
   line-height: 0;
   width:70px;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 30px;
 }
-#validation-status-information-user-head {
-  /*float:left;*/
-  width:50px;
-  display: flex;
-  align-items:center; /*deactivates float of immediate childs*/
-}
-#actual-validation-status-information-user-head {
-  /*float:left;*/
-  width:50px;
-}
-#account-information-user-head {
+
+#validation-information-head {
   float:left;
-  height: 50px;
-  width:100px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
+  padding: 10px 10px 1px 1px;
 }
-#actual-account-information-user-head {
-  /*float:left;*/
+
+#account-information-head {
+  clear:left;
   line-height: 0;
-  height: 70px;
+  height: 30px;
   width:100px;
   color: rgb(104, 109, 129);
   font-size: 30px;
 }
-#follow-head {
-  /*float:right;*/
-  height: 70px;
-  width: 500px;
-}
+
 #button-follow-head {
   float:right;
+  padding: 0px 10px 0px 10px;
   height: 70px;
   width:170px;
   color: rgb(85, 172, 238);
@@ -119,14 +74,14 @@ button{
   border-radius : 10px;
   display: flex;
   align-items:center; /*deactivates float of immediate childs*/
-  padding: 0px 10px 0px 10px;
 }
 #image-button-follow-head {
-  /*float:left;*/
-  width:100px;
+  padding: 10px 0px 10px 10px;
 }
+
 #text-button-follow-head {
   /*float:right;*/
+  padding: 0px 0px 0px 0px;
   line-height: 0;
   width:100px;
   font-size: 30px;
@@ -134,60 +89,34 @@ button{
 }
 #twitt-content{
   float:left;
-  width:1000px;
-}
-#message-content {
-  float:left;
   height: 40px;
-  width:1000px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
-#actual-message-content {
-  /*float:left;*/
   line-height: 0;
   width:1000px;
   font-size: 30px;
+  display: flex;
+  align-items: center; /*deactivates float of immediate childs*/
 }
+
 #twitt-time{
   float: left;
-  width:1000px;
-  color: rgb(101, 116, 127);
-}
-#date-time {
-  float:left;
+  padding: 0px 0px 10px 0px;
+  line-height: 0;
   height: 40px;
   width:1000px;
+  font-size: 30px;
+  color: rgb(101, 116, 127);
   display: flex;
   align-items: center; /*deactivates float of immediate childs*/
 }
-#actual-date-time {
-  /*float:left;*/
-  line-height: 0;
-  width:1000px;
-  font-size: 30px;
-}
+
 #twitt-options{
   float:left;
   width:1000px;
   color: rgb(105, 120, 130);
 }
-#options{
-  float:left;
-  height: 50px;
-  width:1000px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
-#reply-options {
-  /*float:left;*/
-  height: 50px;
-  width: 50px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
+
 #button-reply-options {
-  /*float:left;*/
+  float:left;
   height: 50px;
   width: 50px;
   display: flex;
@@ -199,15 +128,9 @@ button{
   /*float:left;*/
   width:30px;
 }
-#retweet-options {
-  float:left;
-  height: 50px;
-  width: 170px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
+
 #button-retweet-options {
-  /*float:left;*/
+  float:left;
   height: 50px;
   width: 170px;
   display: flex;
@@ -228,15 +151,9 @@ button{
   font-weight: bold;
   color: rgb(105, 120, 130);
 }
-#favorite-options {
-  float:left;
-  height: 50px;
-  width: 170px;
-  display: flex;
-  align-items: center; /*deactivates float of immediate childs*/
-}
+
 #button-favorite-options {
-  /*float:left;*/
+  float:left;
   height: 50px;
   width: 170px;
   display: flex;

@@ -204,7 +204,7 @@ function goForward(rover) {
       {
         grid[actualRow][actualCol] = 3;
         grid[lastRow][lastCol] = 1;
-        console.log("New "+ rover.name +" Position: [" + actualRow + ", " + rover.position[1] + "]; Direction: " + rover.direction);
+        console.log("New "+ rover.name +" Position: [" + actualRow + ", " + actualCol + "]; Direction: " + rover.direction);
       }
       else if (grid[actualRow][actualCol] === 3)
       {
@@ -289,7 +289,7 @@ function goBackwards(rover) {
       break;
     case 'S':
 
-      actualRow--;
+      actualRow++;
       if(actualRow%rowsMax===0) //go y+
       {
         actualRow=0;
@@ -315,7 +315,7 @@ function goBackwards(rover) {
       break;
     case 'E':
 
-      actualCol--;
+      actualCol++;
       if(actualCol%colsMax===0) //go x+
       {
         actualCol=0;

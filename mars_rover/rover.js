@@ -1,5 +1,5 @@
 
-/Description grid 10x10 (rosMax*colsMax)
+//Description grid 10x10 (rosMax*colsMax)
 /*               (y-)
                  S
        0,0 0,1 0,2 0,3......0,9
